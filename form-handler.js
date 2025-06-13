@@ -1,42 +1,48 @@
-document.getElementById("regForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+const form = document.getElementById("regForm");
 
-  const getImageBase64 = () => {
-    return new Promise((resolve, reject) => {
-      const file = document.getElementById('idImage').files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = err => reject(err);
-      reader.readAsDataURL(file);
-    });
-  };
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const formData = {
-    name: `${document.getElementById("firstname").value} ${document.getElementById("middlename").value} ${document.getElementById("lastname").value}`,
-    email: document.getElementById("email").value,
-    contact: document.getElementById("contact").value,
-    dob: document.getElementById("dob").value,
-    idNumber: document.getElementById("idNumber").value,
-    imageBase64: await getImageBase64()
-  };
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "Submitting...";
 
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxYBgaLZm6qNFKE4JgveZFaY73gX6LWTIVTsPDLLXbc70-fw1-iBnyj5Rw7yfqhII6n/exec", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" }
-    });
+    const formData = new FormData(form);
+    const imageFile = formData.get("idImage");
 
-    const result = await response.json();
-    document.getElementById("result").textContent = result.message || "Submission complete.";
+    // Convert image to Base64
+    const reader = new FileReader();
+    reader.onloadend = async function () {
+      const base64Image = reader.result.split(",")[1]; // strip data:image/...;base64,
 
-    if (result.verified && result.link) {
-      document.getElementById("whatsapp-link").innerHTML = `<a href="${result.link}" target="_blank">✅ Join WhatsApp Group</a>`;
-    } else {
-      document.getElementById("whatsapp-link").innerHTML = "";
-    }
-  } catch (error) {
-    document.getElementById("result").textContent = "❌ Submission failed. Please try again.";
-    console.error("Error:", error);
-  }
-});
+      const payload = {
+        firstname: formData.get("firstname"),
+        middlename: formData.get("middlename"),
+        lastname: formData.get("lastname"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        dob: formData.get("dob"),
+        idnumber: formData.get("idnumber"),
+        image: base64Image,
+        filename: imageFile.name
+      };
+
+      try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwUsnH8Pp2toZJUxIct-HgVZ60YyYRUV8WVrud5u7gDpP533d0eLyQEfUgeKRgeMWoJ/exec", {
+          method: "POST",
+          body: JSON.stringify(payload),
+          headers: { "Content-Type": "application/json" }
+        });
+
+        const result = await response.json();
+        if (result.status === "success") {
+          resultDiv.innerHTML = `<p>Form submitted successfully. Age: ${result.age}</p>`;
+        } else {
+          resultDiv.innerHTML = `<p>Error: ${result.message}</p>`;
+        }
+      } catch (err) {
+        resultDiv.innerHTML = `<p>Failed to submit: ${err}</p>`;
+      }
+    };
+
+    reader.readAsDataURL(imageFile);
+  });

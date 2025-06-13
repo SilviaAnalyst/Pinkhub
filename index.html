@@ -11,37 +11,34 @@
 <div class="main">
   <h2>Register for My Shaylaah Group</h2>
   <form id="regForm">
-    <label for="firstname">First Name:</label>
-    <input type="text" id="firstname" required />
+    <label>First Name:</label>
+    <input type="text" name="firstname" required />
 
-    <label for="middlename">Middle Name:</label>
-    <input type="text" id="middlename" required />
+    <label>Middle Name:</label>
+    <input type="text" name="middlename" required />
 
-    <label for="lastname">Last Name:</label>
-    <input type="text" id="lastname" required />
+    <label>Last Name:</label>
+    <input type="text" name="lastname" required />
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" required />
+    <label>Email:</label>
+    <input type="email" name="email" required />
 
-    <label for="contact">Phone Number:</label>
-    <input type="tel" id="contact" required />
+    <label>Phone Number:</label>
+    <input type="tel" name="phone" required />
 
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" required />
+    <label>Date of Birth:</label>
+    <input type="date" name="dob" required />
 
-    <label for="idNumber">ID Number:</label>
-    <input type="text" id="idNumber" required />
+    <label>ID Number:</label>
+    <input type="text" name="idnumber" required />
 
-    <label for="idImage">Upload ID Image:</label>
-    <input type="file" id="idImage" accept="image/*" required />
+    <label>Upload ID Image:</label>
+    <input type="file" name="idImage" id="idImage" accept="image/*" required />
 
     <input type="submit" value="Submit" />
   </form>
 
   <div id="result"></div>
-  <div id="whatsapp-link"></div>
-</div>
-
-<script src="form-handler.js"></script>
+ </div> 
+  <script src="form-handler.js"></script>
 </body>
-</html>
