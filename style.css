@@ -1,0 +1,229 @@
+/* Base reset and typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+
+
+body {
+    background: linear-gradient(to right,rgb(165, 56, 120), #0d0d0e); /* soft green to soft gray */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+
+
+    /* Welcome Animation Screen */
+    #welcome-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #d452a9;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        z-index: 999;
+        animation: fadeOut 3s ease 3s forwards;
+      }
+  
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+  
+
+/* Main form wrapper */
+.main {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Heading */
+.main h1 {
+    color: #0f0f0f; 
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Form layout */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Labels */
+form label {
+    font-weight: 600;
+    color: #0f0f0f;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+form input {
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1.5px solid #f70190;
+    border-radius: 6px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+ #email{
+    text-transform: lowercase;
+ }
+
+ #id{
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+    /* position: absolute; */
+    
+ }
+
+ .id{
+    position: relative;
+ }
+
+form select  {
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1.5px solid #8b2e67;
+    border-radius: 6px;
+    transition: border 0.3s, box-shadow 0.3s;
+
+}
+
+form input:focus {
+    outline: none;
+    border-color: #1e6e43;
+    box-shadow: 0 0 5px rgba(46, 139, 87, 0.4);
+}
+
+/* Submit button */
+form button {
+    background-color: #0c0c0c;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #1e6e43;
+}
+
+.but button{
+    width: 100px;
+}
+
+.sub input{
+    width: 100%;
+    background-color: #011603;
+    text-transform: capitalize;
+    color: #ffffff;
+    
+}
+
+.sub input:hover{
+    background-color: #1e6e43;
+
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+grey{
+    background-color: grey;
+    cursor: not-allowed;
+  }
+
+  grey.enabled {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+  }
+
+.red:hover{
+    background-color: rgb(233, 38, 38);
+}
+
+#custom-alert {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 300px;
+  }
+  
+  #custom-alert button {
+    background-color: white;
+    color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  #custom-alert button:hover {
+    background-color: #45a049;
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      padding: 15px;}}
+
+  
+ /* Custom Popup */
+ .popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e6ffe6;
+    border: 2px solid green;
+    color: green;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    animation: fadeInOut 4s forwards;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; top: 0px; }
+    10% { opacity: 1; top: 20px; }
+    90% { opacity: 1; top: 20px; }
+    100% { opacity: 0; top: 0px; display: none; }
+  }     

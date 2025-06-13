@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Shaylaah</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="welcome-screen">
+  <h1>Welcome to The My Shaylaah Group Registration</h1>
+</div>
+
+<div class="main">
+  <h1>Registration Form</h1>
+
+  <form>
+    <label for="firstname">First Name:</label>
+    <input type="text" id="firstname" required><br>
+
+    <label for="middlename">Middle Name:</label>
+    <input type="text" id="middlename" required><br>
+
+    <label for="lastname">Last Name:</label>
+    <input type="text" id="lastname" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="contact">Phone Number:</label>
+    <input type="tel" id="contact" required><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" required><br>
+
+    <label for="idNumber">ID Number:</label>
+    <input type="text" id="idNumber" required><br>
+
+    <label for="idImage">Upload ID Image:</label>
+    <input type="file" id="idImage" accept="image/*" required><br>
+
+    <div class="sub">
+      <input type="submit" value="Submit" id="submit">
+    </div>
+  </form>
+
+  <div id="result" style="margin-top: 10px;"></div>
+  <div id="whatsapp-link" style="margin-top: 10px; font-weight: bold;"></div>
+</div>
+
+<script src="fun.js"></script>
+</body>
+</html>
